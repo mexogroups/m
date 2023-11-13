@@ -27,4 +27,6 @@ personality=linux
 preserve-environment=true
 EOF
 
+cat debconfig.txt | tee -a ~/.bashrc
+
 sudo schroot -c debian-sid

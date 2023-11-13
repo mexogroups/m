@@ -14,7 +14,7 @@ alias clean='fakeroot debian/rules clean'
 
 
 #First fork and clone the salsa repo using git-buildpackage i.e gbp:
-gbp clone --pristine-tar git@salsa.debian.org:js-team/node-npmr.git 
+gbp clone --pristine-tar git@salsa.debian.org:js-team/node-stdlib.git 
 
 #Using git to clone instead of gbp
 git clone git@salsa.debian.org:js-team/node-config.git 
@@ -23,7 +23,7 @@ git checkout pristine-tar
 git checkout master 
 
 #Next cd into the directory and download the new upstream release tarball using the command:
-cd node-config
+cd node-stdlib
 uscan --verbose
 
 #Get the source from previous version incase you don't have the debian dir.. you can then copy from previous and modify
@@ -50,7 +50,7 @@ gbp dch -a
 ########################################################################
 
 #Install build dependency 
-sudo apt build-dep node-config 
+sudo apt build-dep node-stdlib 
 
 #Now we build. Run:
 dpkg-buildpackage
@@ -94,7 +94,7 @@ sbuild
 dch -r -D experimental 
 
 git remote -v
-git remote set-url origin git@salsa.debian.org:mr.winz/node-config.git 
+git remote set-url origin git@salsa.debian.org:mr.winz/node-stdlib.git 
 git push -u --all --follow-tags
 
 #Create merge request for forwarding patches to upstream
