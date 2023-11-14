@@ -11,7 +11,6 @@ gpg --list-secret-keys --keyid-format LONG nwekegodwin65@gmail.com
 echo ""
 echo ""
 
-# Prompt the user to enter their GPG key ID
 read -p "Enter your GPG key ID: " key
 
 git config --global user.signingkey $key
