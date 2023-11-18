@@ -14,23 +14,23 @@ alias clean='fakeroot debian/rules clean'
 
 
 #First fork and clone the salsa repo using git-buildpackage i.e gbp:
-gbp clone --pristine-tar git@salsa.debian.org:js-team/node-balanced-match.git 
+gbp clone --pristine-tar git@salsa.debian.org:js-team/node-core-js.git 
 
 #Using git to clone instead of gbp
-git clone git@salsa.debian.org:js-team/node-balanced-match.git 
+git clone git@salsa.debian.org:js-team/node-core-js.git 
 git checkout upstream 
 git checkout pristine-tar 
 git checkout master 
 
 #Next cd into the directory and download the new upstream release tarball using the command:
-cd node-balanced-match
+cd node-core-js
 uscan --verbose
 
 #Get the source from previous version incase you don't have the debian dir.. you can then copy from previous and modify
 #apt source node-yaml
 
 #If you used uscan to download the tarballs you should see a tarball named package-name_upstream-version.orig.tar.gz in the directory, you cloned the repo in. Import the orig.tar.gz using:
-gbp import-orig --pristine-tar ../node-balanced-match_3.3.9.orig.tar.gz
+gbp import-orig --pristine-tar ../node-core-js_3.3.9.orig.tar.gz
 #../node-yaml_2.3.3.orig.tar.gz 
 #
 
@@ -50,7 +50,7 @@ gbp dch -a
 ########################################################################
 
 #Install build dependency 
-sudo apt build-dep node-balanced-match 
+sudo apt build-dep node-core-js 
 
 #Now we build. Run:
 dpkg-buildpackage
@@ -94,12 +94,12 @@ sbuild
 dch -r -D experimental 
 
 git remote -v
-git remote set-url origin git@salsa.debian.org:mr.winz/node-balanced-match.git 
+git remote set-url origin git@salsa.debian.org:mr.winz/node-core-js.git 
 git push -u --all --follow-tags
 
 #Create merge request for forwarding patches to upstream
-https://salsa.debian.org/mr.winz/node-balanced-match/-/merge_requests/new?merge_request%5Bsource_branch%5D=upstream%2Flatest
+https://salsa.debian.org/mr.winz/node-core-js/-/merge_requests/new?merge_request%5Bsource_branch%5D=upstream%2Flatest
 https://salsa.debian.org/mr.winz/node-yaml/-/merge_requests/new?merge_request%5Bsource_branch%5D=upstream
 
 #Create merge request for patches for 
-#https://salsa.debian.org/mr.winz/node-balanced-match/-/merge_requests/new?merge_request%5Bsource_branch%5D=pristine-tar
+#https://salsa.debian.org/mr.winz/node-core-js/-/merge_requests/new?merge_request%5Bsource_branch%5D=pristine-tar
